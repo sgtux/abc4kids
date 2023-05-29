@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>ABC 4 Kids</title>
+    <link href="./css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="toolbar">ABC 4 Kids</div>
+    <div id="feedbackScreen">
+        <div id="gradeText">
+            BOM
+        </div>
+        <div id="gradeNumber">
+            88
+        </div>
+    </div>
+    <div id="questionScreen">
+        <div>
+            <span id="spanAnsweredNumber">0</span>/<span id="spanQuestionNumber">0</span>
+        </div>
+        <div>
+            <audio autoplay="true" controls id="ctrlAudio">
+                <source id="srcAudio" type="audio/mpeg">
+            </audio>
+        </div>
+        <div>
+            <input class="txt-answer" type="text" />
+        </div>
+        <div>
+            <button id="btnCheck" onclick="checkAnswer()">corrigir</button>
+        </div>
+        <div class="message-box">
+            <div class="error-message">
+                Correto é:
+                <span id="spanRightAnswer"></span>
+            </div>
+            <div class="success-message">ACERTOU</div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

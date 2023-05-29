@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.toolbar {
+    height: 60px;
+    background-color: #58cc02;
+    color: white;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    font-family: din-round, sans-serif;
+    font-weight: bold;
+}
+
+#questionScreen,
+#feedbackScreen {
+    margin: 0 auto;
+    margin-top: 100px;
+    padding-top: 10px;
+    height: 400px;
+    width: 600px;
+    box-shadow: 2px 2px 3px gray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#feedbackScreen {
+    justify-content: center;
+    display: none;
+}
+
+#gradeText {
+    font-size: 50px;
+    text-transform: uppercase;
+}
+
+#gradeNumber {
+    font-size: 50px;
+}
+
+.txt-answer {
+    height: 40px;
+    width: 300px;
+    font-size: 20px;
+    text-transform: uppercase;
+    border: none;
+    border-bottom: solid 2px black;
+    text-align: center;
+}
+
+.txt-answer:focus {
+    border: none;
+    border-bottom: solid 3px black;
+}
+
+input:focus {
+    border: none;
+    outline: none;
+}
+
+#btnCheck {
+    background-color: #49C0F8;
+    color: white;
+    width: 200px;
+    height: 60px;
+    font-size: 24px;
+    padding: 2px;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 300ms;
+}
+
+#btnCheck:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.message-box {
+    height: 60px;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.error-message {
+    font-size: 50px;
+    width: 0;
+    height: 0;
+    transition: 300ms;
+    color: white;
+    background-color: #ff3333;
+    text-align: center;
+    /* border-radius: 20px; */
+}
+
+.success-message {
+    font-size: 50px;
+    width: 0;
+    height: 0;
+    transition: 300ms;
+    color: white;
+    background-color: #00ff00;
+    text-align: center;
+    /* border-radius: 20px; */
+}
+
+.terrible-text {
+    color: #f00;
+}
+
+.bad-text {
+    color: #f80;
+}
+
+.regular-text {
+    color: #ff0;
+}
+
+.good-text {
+    color: #0f0;
+}
+
+.great-text {
+    color: #0ff;
+}
+
+.excelent-text {
+    color: #00f;
+}

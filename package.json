@@ -1,0 +1,16 @@
+{
+  "name": "speech-learn",
+  "version": "1.0.0",
+  "description": "App to learn how to write words",
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+  "author": "Gabriel Rosa",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.17",
+    "express": "^4.18.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
