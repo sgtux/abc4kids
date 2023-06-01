@@ -1,5 +1,11 @@
-### TODO:
-Adicionar audios das sequintes frutas:
+Baseado na lista do site:
+    https://www.todamateria.com.br/frutas/
+
+Site conversor de texto em audio:
+    https://speechgen.io/pt/
+
+
+Audios de frutas:
 Abacate-
 Abacaxi-
 Açaí-
@@ -33,8 +39,4 @@ Tamarindo-
 Tangerina-
 Uva-
 
-Baseado na lista do site:
-    https://www.todamateria.com.br/frutas/
-
-Site conversor de texto em audio:
-    https://speechgen.io/pt/
+Audios de móveis:
