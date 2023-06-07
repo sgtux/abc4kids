@@ -1,0 +1,23 @@
+{
+    "defaultSeverity": "warn",
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "member-access": [
+            true,
+            "no-public"
+        ]
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "bin",
+            "./client"
+        ]
+    }
+}
