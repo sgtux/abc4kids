@@ -31,7 +31,7 @@ let updateDatabase = true
 
 export const synchronizeDatabase = async (force = false) => {
     if (updateDatabase)
-        await sequelize.sync({ force: force })
+        await sequelize.sync({ force })
     updateDatabase = false
 }
 

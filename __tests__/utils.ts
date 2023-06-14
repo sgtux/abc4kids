@@ -12,11 +12,11 @@ export const httpClient = supertest(app.getExpressApp())
 beforeAll(async () => {
     await app.synchronizeDatabase(true)
 
-    await userRepository.createUser('alice1', '123456', UserType.Teacher)
-    await userRepository.createUser('carlos', '123456', UserType.Teacher)
-    await userRepository.createUser('bobb', '123456', UserType.Teacher)
+    await userRepository.createUser('alice1', '123456', UserType.Teacher, 1)
+    await userRepository.createUser('carlos', '123456', UserType.Teacher, 2)
+    await userRepository.createUser('bobb', '123456', UserType.Teacher, 1)
 
-    await userRepository.createUser('aluno1', '123456', UserType.Student)
+    await userRepository.createUser('aluno1', '123456', UserType.Student, 1)
 
     await roomRepository.createRoom(1, 'Alice Room 1')
     await roomRepository.createRoom(1, 'Alice Room 2')

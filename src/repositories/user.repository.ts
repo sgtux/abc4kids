@@ -49,6 +49,15 @@ export const createUserModelAttributes = (): ModelAttributes<Model<any, any>, Us
             notEmpty: { msg: 'O campo tipo é obrigatório.' },
             isIn: { args: [[1, 2]], msg: 'O tipo informado é inválido.' }
         }
+    },
+    avatar: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+            notNull: { msg: 'O campo avatar é obrigatório.' },
+            notEmpty: { msg: 'O campo avatar é obrigatório.' },
+            min: { args: [1], msg: 'O avatar informado é inválido.' }
+        }
     }
 })
 
@@ -77,8 +86,8 @@ export class UserRepository {
         return user?.toJSON()
     }
 
-    createUser(username: string, password: string, type: UserType) {
-        return this.userModel.create({ username, password, type })
+    createUser(username: string, password: string, type: UserType, avatar: number) {
+        return this.userModel.create({ username, password, type, avatar })
     }
 
 }

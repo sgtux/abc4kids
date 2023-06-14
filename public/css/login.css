@@ -1,0 +1,115 @@
+:root {
+    --green-theme: #58cc02
+}
+
+.login-account-box {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    justify-content: space-around;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 9px 13px grey;
+    border-radius: 6px;
+}
+
+#imgAvatarLogin {
+    align-self: center;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    border: 1px solid #bbb;
+}
+
+.login-account-box>div {
+    display: flex;
+    justify-content: center;
+}
+
+.login-account-box .form-icon {
+    height: 36px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 2px;
+}
+
+.login-account-box button {
+    margin-top: 10px;
+}
+
+#divAvatarsList,
+#usernameErrorMessage,
+#passwordErrorMessage,
+#divPasswordConfirm {
+    display: none;
+}
+
+#divType input {
+    margin-left: 10px;
+}
+
+input[type=radio] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--form-background);
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 20px;
+    height: 20px;
+    border: 0.15em solid currentColor;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type=radio]::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--green-theme);
+    background-color: CanvasText;
+}
+
+input[type=radio]:checked::before {
+    transform: scale(1);
+    font-size: 20px;
+}
+
+input[type=radio]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+    color: var(--green-theme);
+}
+
+#divType>label {
+    display: flex;
+    margin-left: 10px;
+}
+
+#divType>label>input {
+    margin-right: 10px;
+}
+
+#divType>label:focus-within,input[type=radio]:checked {
+    color: var(--green-theme);
+}
+
+#divSuccessMessage {
+    display: none;
+}
+
+#divErrorList {
+    display: block;
+}
+
+#divErrorList .error-box {
+    margin-top: 4px;
+}

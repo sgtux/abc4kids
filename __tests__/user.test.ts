@@ -1,5 +1,6 @@
 import assert from 'node:assert'
 import { httpClient } from './utils'
+import { User } from '../src/models'
 
 describe('Users', () => {
 
@@ -17,23 +18,23 @@ describe('Users', () => {
         })
     })
 
-    describe('Validade if user exists', () => {
+    describe('Validade if user exists returning avatar', () => {
 
         it('Exists', async () => {
 
             const result = await httpClient
-                .get('/user-exists/carlos')
+                .get('/user-avatar/carlos')
                 .send({ username: 'carlos' })
 
-            assert.equal(result.body.exists, true, 'Should be returned true.')
+            assert.equal(result.body.avatar, 2, 'Should be returned 2.')
         })
 
         it('Don\'t exists', async () => {
 
             const result = await httpClient
-                .get('/user-exists/carloss')
+                .get('/user-avatar/carloss')
 
-            assert.equal(result.body.exists, false, 'Should be returned false.')
+            assert.equal(!!result.body.avatar, false, 'Should be returned false.')
         })
     })
 
@@ -42,7 +43,7 @@ describe('Users', () => {
         it('Username field is required', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: '', password: '123456', type: 2 })
+                .send({ username: '', password: '123456', type: 2, avatar: 2 })
                 .expect(400)
             assert.equal(result.body.errors[0], 'O campo nome é obrigatório.')
         })
@@ -50,70 +51,84 @@ describe('Users', () => {
         it('Username with less then 4 chars', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'ali', password: '123456', type: 2 })
+                .send({ username: 'ali', password: '123456', type: 2, avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo nome deve ter entre 4 e 20 caracteres.')
         })
 
         it('Username with more then 20 chars', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alicealicealicealicea', password: '123456', type: 2 })
+                .send({ username: 'alicealicealicealicea', password: '123456', type: 2, avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo nome deve ter entre 4 e 20 caracteres.')
         })
 
         it('Username with invalid chars', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alic@e1', password: '123456', type: 2 })
+                .send({ username: 'alic@e1', password: '123456', type: 2, avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo nome possui caracteres inválidos.')
         })
 
         it('Password field is required', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alice1', password: '', type: 2 })
+                .send({ username: 'alice1', password: '', type: 2, avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo senha é obrigatório.')
         })
 
         it('Password with less then 6 chars', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alice1', password: '12345', type: 2 })
+                .send({ username: 'alice1', password: '12345', type: 2, avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo senha deve ter entre 6 e 20 caracteres.')
         })
 
         it('Password with more then 20 chars', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alice1', password: '123451234512345123451', type: 2 })
+                .send({ username: 'alice1', password: '123451234512345123451', type: 2, avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo senha deve ter entre 6 e 20 caracteres.')
         })
 
         it('Password field with invalid chars', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alice1', password: '123*456', type: 2 })
+                .send({ username: 'alice1', password: '123*456', type: 2, avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo senha possui caracteres inválidos.')
         })
 
         it('Type field is required', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alice1', password: '' })
+                .send({ username: 'alice1', password: '', avatar: 2 })
             assert.equal(result.body.errors[0], 'O campo tipo é obrigatório.')
         })
 
         it('Invalid type field', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alice1', password: '123456', type: 3 })
+                .send({ username: 'alice1', password: '123456', type: 3, avatar: 2 })
             assert.equal(result.body.errors[0], 'O tipo informado é inválido.')
+        })
+
+        it('Avatar field is required', async () => {
+            const result = await httpClient
+                .post('/user')
+                .send({ username: 'alice1', password: '123456', type: 2 })
+            assert.equal(result.body.errors[0], 'O campo avatar é obrigatório.')
+        })
+
+        it('Invalid avatar field', async () => {
+            const result = await httpClient
+                .post('/user')
+                .send({ username: 'alice1', password: '123456', type: 2, avatar: 0 })
+            assert.equal(result.body.errors[0], 'O avatar informado é inválido.')
         })
 
         it('Create user successfully', async () => {
             const result = await httpClient
                 .post('/user')
-                .send({ username: 'alice10', password: '123456', type: 2 })
+                .send({ username: 'alice10', password: '123456', type: 2, avatar: 2 })
             assert.equal((result.body.errors || []).length, 0, 'Should returns with no errors.')
         })
 

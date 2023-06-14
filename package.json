@@ -4,7 +4,7 @@
   "description": "App to learn how to write words",
   "scripts": {
     "start": "nodemon --watch src --exec ts-node index.ts",
-    "lint": "tslint -p tsconfig.json \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json \"src/**/*.ts\" \"__tests__/**/*.ts\"",
     "test": "jest **/*.test.ts --runInBand"
   },
   "author": "Gabriel Santos",

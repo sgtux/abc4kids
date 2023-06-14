@@ -25,6 +25,7 @@ export interface User {
     username: string
     password: string
     type: UserType
+    avatar: number
 }
 
 export enum UserType {

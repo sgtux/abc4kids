@@ -11,7 +11,7 @@ export class UserController extends BaseController {
     route(app: Application) {
         app.get('/user', (req, res) => void exceptionHandler(req, res, this.getAll))
         app.post('/user', (req, res) => void exceptionHandler(req, res, this.createUser))
-        app.get('/user-exists/:username', (req, res) => void exceptionHandler(req, res, this.userExists))
+        app.get('/user-avatar/:username', (req, res) => void exceptionHandler(req, res, this.userAvatar))
         app.post('/login', (req, res) => void exceptionHandler(req, res, this.login))
         app.get('/logout', (req, res) => void exceptionHandler(req, res, this.logout))
     }
@@ -21,20 +21,20 @@ export class UserController extends BaseController {
     }
 
     private async createUser(req: AppRequest, res: AppResponse) {
-        const { username, password, type } = req.body || {}
+        const { username, password, type, avatar } = req.body || {}
 
-        await userRepository.createUser(username.toLowerCase(), password, type)
+        await userRepository.createUser((username || '').toLowerCase(), password, type, avatar)
         return res.json({ message: 'Usuário criado com sucesso.' })
     }
 
-    private async userExists(req: AppRequest, res: AppResponse) {
+    private async userAvatar(req: AppRequest, res: AppResponse) {
         const { username } = req.params || {}
 
         if (!username)
             return res.json({ exists: false })
 
         const user = await userRepository.findUserByUsername(username.toLowerCase())
-        return res.json({ exists: !!user })
+        return res.json({ avatar: user?.avatar })
     }
 
     private async login(req: AppRequest, res: AppResponse) {
@@ -61,6 +61,6 @@ export class UserController extends BaseController {
     private async logout(req: AppRequest, res: AppResponse) {
 
         res.clearCookie(CONSTANTS.TOKEN_KEY, { path: '/' })
-        res.json({ message: 'Logout efetuado com sucesso.' })
+        return res.redirect('/login.html')
     }
 }

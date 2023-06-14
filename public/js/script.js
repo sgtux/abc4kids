@@ -1,3 +1,6 @@
+import { httpService } from './http.service.js'
+import { storageService } from './storage.service.js'
+
 const CATEGORIES = ["Frutas", "Móveis", "Objetos"]
 
 const WORDS = {
@@ -68,6 +71,7 @@ const questionScreen = document.getElementById('questionScreen')
 const feedbackScreen = document.getElementById('feedbackScreen')
 const gradeText = document.getElementById('gradeText')
 const gradeNumber = document.getElementById('gradeNumber')
+const imgAvatar = document.getElementById('imgAvatar')
 
 spanQuestionNumber.innerText = '' + nQuestions
 
@@ -171,4 +175,20 @@ function gradeAnimation(current, ends) {
     }
 }
 
-loadNewWord()
+window.logout = function () {
+    localStorage.clear()
+    location.href = '/logout'
+}
+
+loadNewWord();
+
+(async function () {
+    const avatar = storageService.getAvatar()
+    imgAvatar.src = `./avatars/${avatar}.png`
+    try {
+        const rooms = await httpService.getRooms()
+        console.log(rooms)
+    } catch (ex) {
+        console.log(ex.status)
+    }
+})()
