@@ -1,22 +1,11 @@
-import express from 'express'
-import bodyparser from 'body-parser'
-
-import { updateDb } from './src/db'
-import router from './src/router'
-import { authMiddleware } from './src/middlewares/auth'
-
-const app = express()
-
-app.use(express.static('public'))
-
-app.use(bodyparser.json())
-
-app.use(authMiddleware)
-
-router(app)
-
-updateDb()
+import { App } from './src/app'
 
 const port = 3001
 
-app.listen(port, () => console.log(`Listening on ${port} port.`))
+const app = new App(3001)
+
+app.listen(() => {
+    app.synchronizeDatabase()
+        .then(() => console.info(`Listening on ${port} port.`))
+        .catch(err => console.log(err))
+})

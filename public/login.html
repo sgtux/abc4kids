@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>ABC 4 Kids</title>
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="./css/login.css" rel="stylesheet" />
+    <link href="./css/modal.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="toolbar">
+        <div></div>
+        <div class="toolbar-title">ABC 4 Kids</div>
+        <div></div>
+    </div>
+    <div class="login-account-box" id="divLoginAccount">
+        <img id="imgAvatarLogin" src="./avatars/avatar-blank.png" height="80" width="80" alt="" />
+        <div id="divAvatarsList">
+            <div>
+                <img src="./avatars/1.png" alt="" />
+                <img src="./avatars/2.png" alt="" />
+                <img src="./avatars/3.png" alt="" />
+                <img src="./avatars/4.png" alt="" />
+            </div>
+            <div>
+                <img src="./avatars/5.png" alt="" />
+                <img src="./avatars/6.png" alt="" />
+                <img src="./avatars/7.png" alt="" />
+                <img src="./avatars/8.png" alt="" />
+            </div>
+        </div>
+        <div class="text-box">
+            <img class="form-icon" src="./avatars/unknown-avatar.png" alt="" />
+            <input id="txtUsername" placeholder="Nome" class="text-input" maxlength="20"
+                onfocusout="validateUsername()" />
+        </div>
+        <span id="usernameErrorMessage" class="error-box">Usuário não encontrado</span>
+        <div class="text-box">
+            <img class="form-icon" src="./avatars/padlock.png" alt="" />
+            <input id="txtPassword" type="password" onkeyup="validateForm()" placeholder="Senha" class="text-input"
+                maxlength="20" />
+        </div>
+        <span id="passwordErrorMessage" class="error-box">Senha incorreta</span>
+        <div class="text-box" id="divPasswordConfirm">
+            <img class="form-icon" src="./avatars/padlock.png" alt="" />
+            <input id="txtPasswordConfirm" type="password" onkeyup="validateForm()" placeholder="Confirme a senha"
+                class="text-input" maxlength="20" />
+        </div>
+        <div class="text-box" id="divType">
+            <label>
+                <input type="radio" name="type" value="1" />PROFESSOR
+            </label>
+            <label>
+                <input type="radio" name="type" value="2" />ALUNO
+            </label>
+        </div>
+        <span id="divSuccessMessage" class="success-box"></span>
+        <button id="btnLogin" disabled class="btn btn-success" onclick="sendForm()">ENTRAR</button>
+        <a href="javascript:void(0)" onclick="changeScreenMode()" id="lkChangeMode">Criar Conta</a>
+        <div id="divErrorList"></div>
+    </div>
+    <script type="module" src="./js/login.js"></script>
+</body>
+
+</html>

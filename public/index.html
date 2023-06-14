@@ -7,7 +7,21 @@
 </head>
 
 <body>
-    <div class="toolbar">ABC 4 Kids</div>
+    <div class="toolbar">
+        <div>
+            <img src="./favicon.ico" alt="" class="toolbar-logo" />
+        </div>
+        <div class="toolbar-title">ABC 4 Kids</div>
+        <div class="menu-box">
+            <img src="./avatars/avatar-blank.png" alt="" class="profile" id="imgAvatar" />
+            <div class="menu">
+                <button class="menu-action">trocar avatar</button>
+                <div class="menu-line"></div>
+                <button onclick="logout()" class="menu-action">sair</button>
+            </div>
+        </div>
+    </div>
+
     <div id="feedbackScreen">
         <div id="gradeText">
             BOM
@@ -39,7 +53,7 @@
             <div class="success-message">ACERTOU</div>
         </div>
     </div>
-    <script src="./js/script.js"></script>
+    <script type="module" src="./js/script.js"></script>
 </body>
 
 </html>

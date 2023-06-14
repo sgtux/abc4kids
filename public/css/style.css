@@ -1,4 +1,15 @@
+@font-face {
+    font-family: varela-round-regular;
+    src: url('../fonts/VarelaRound-Regular.ttf');
+}
+
+@font-face {
+    font-family: din-round;
+    src: url('../fonts/dio-round.woff2');
+}
+
 * {
+    font-family: din-round, 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
 }
@@ -9,10 +20,81 @@
     color: white;
     font-size: 32px;
     display: flex;
-    justify-content: center;
-    padding-top: 20px;
+    justify-content: space-between;
     font-family: din-round, sans-serif;
     font-weight: bold;
+    padding: 10px;
+}
+
+.toolbar .profile {
+    box-shadow: 0px 0px 2px 2px white;
+    border-radius: 50%;
+    background-color: white;
+    padding: 2px;
+    opacity: .9;
+    transition: .3s;
+    height: 60px;
+}
+
+.toolbar-logo {
+    height: 60px;
+}
+
+.toolbar-title {
+    margin-top: 10px;
+}
+
+.toolbar .profile:hover {
+    opacity: 1;
+    cursor: pointer;
+    height: 64px;
+}
+
+.text-input {
+    font-size: 20px;
+    padding-left: 10px;
+    height: 40px;
+    border-radius: 6px;
+    border: solid 1px #aaa;
+    text-transform: uppercase;
+}
+
+.text-input:focus {
+    border: solid 1px rgb(0, 123, 255);
+}
+
+.text-box {
+    margin: 10px 0;
+}
+
+.warn-box, .error-box, .success-box {
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+.warn-box {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.error-box {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.success-box {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+#userDoesntWxistsWarn {
+    display: none;
 }
 
 #questionScreen,
@@ -98,7 +180,6 @@ input:focus {
     color: white;
     background-color: #ff3333;
     text-align: center;
-    /* border-radius: 20px; */
 }
 
 .success-message {
@@ -109,7 +190,6 @@ input:focus {
     color: white;
     background-color: #00ff00;
     text-align: center;
-    /* border-radius: 20px; */
 }
 
 .terrible-text {
@@ -134,4 +214,151 @@ input:focus {
 
 .excelent-text {
     color: #00f;
+}
+
+.btn {
+    font-size: 30px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    transition: 300ms;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.btn:before {
+    content: "";
+    display: flex;
+    opacity: 0;
+    transition: all .7s;
+    box-shadow: 0px 30px 10px 40px white;
+}
+
+.btn:active:before {
+    box-shadow: 0 0 0 0 white;
+    opacity: 1;
+    transition: 0s;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    opacity: 1;
+    cursor: default;
+}
+
+.btn:disabled:before {
+    opacity: 0;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: rgb(0, 123, 255);
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #58cc02;
+}
+
+#divAvatarsList img {
+    border-radius: 50%;
+    height: 70px;
+    cursor: pointer;
+    box-shadow: 2px 2px 6px 3px grey;
+    transition: 300ms;
+    margin: 10px;
+}
+
+#divAvatarsList img:hover {
+    opacity: .9;
+}
+
+#divAvatarsList img.selected {
+    box-shadow: 2px 2px 6px 3px #77D649;
+}
+
+#lkChangeMode {
+    margin-top: 10px;
+}
+
+.menu-box {
+    width: 100px;
+    text-align: center;
+}
+
+.menu-box:hover .menu {
+    opacity: 1;
+    height: 80px;
+    box-shadow: 2px 2px 2px 2px #ccc;
+}
+
+.menu {
+    top: 80px;
+    right: 20px;
+    width: 200px;
+    height: 0;
+    position: fixed;
+    opacity: 0;
+    transition: .3s;
+    overflow: hidden;
+}
+
+.menu .menu-action {
+    width: 100%;
+    border: none;
+    background-color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 6px;
+    transition: .3s;
+}
+
+.menu .menu-action:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
+
+.menu .menu-line {
+    border: 1px solid #ddd;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutFadeIn {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in-effect {
+    animation: fadeIn .6s;
+}
+
+.fade-out-fade-in-effect {
+    animation: fadeOutFadeIn .6s;
+}
+
+#divLoginAccount {
+    opacity: 0;
 }
