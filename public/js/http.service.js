@@ -22,15 +22,15 @@ async function getRooms() {
 }
 
 async function getAvatar(username) {
-    return await doRequest('/user-avatar/' + username, 'get')
+    return await doRequest('/user-avatar/' + encodeURI(username), 'get')
 }
 
 async function login(username, password) {
     return await doRequest('/login', 'post', { username, password })
 }
 
-async function createUser(username, password, type, avatar) {
-    return await doRequest('/user', 'post', { username, password, type, avatar })
+async function createUser(username, password, confirm, type, avatar) {
+    return await doRequest('/user', 'post', { username, password, confirm, type, avatar })
 }
 
 export const httpService = {
