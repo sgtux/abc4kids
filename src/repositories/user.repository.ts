@@ -23,9 +23,9 @@ export const createUserModelAttributes = (): ModelAttributes<Model<any, any>, Us
             notEmpty: { msg: 'O campo nome é obrigatório.' },
             len: { args: [4, 20], msg: 'O campo nome deve ter entre 4 e 20 caracteres.' },
             is: {
-                msg: 'O campo nome possui caracteres inválidos.',
-                args: /^[0-9a-z]*$/i
-            },
+                msg: 'O nome informado possui caracteres inválidos, os caracteres permitidos são apenas letras números e os caracteres especiais (_@#&)',
+                args: /[a-zA-Z0-9_@#&]+$/i
+            }
         }
     },
     password: {

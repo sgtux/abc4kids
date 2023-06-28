@@ -9,7 +9,7 @@ export const authMiddleware = (req: AppRequest, res: Response, next: NextFunctio
     if (req.method.toLowerCase() === 'post' && FREE_PATHS.includes(req.url))
         return next()
 
-    if (req.method.toLowerCase() === 'get' && /^\/user-avatar\/[a-zA-Z0-9_#@]+$/.test(req.url))
+    if (req.method.toLowerCase() === 'get' && req.url.startsWith('/user-avatar'))
         return next()
 
     try {

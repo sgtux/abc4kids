@@ -80,6 +80,7 @@ async function validateUsernameCreateMode() {
 async function sendForm() {
     const username = txtUsername.value
     const password = txtPassword.value
+    const confirm = txtPasswordConfirm.value
     if (screenMode === SCREEN_MODES.LOGIN) {
         const result = await httpService.login(username, password)
         if ((result.errors || []).length)
@@ -90,7 +91,7 @@ async function sendForm() {
             location.href = '/'
         }
     } else {
-        const result = await httpService.createUser(username, password, selectedType, selectedAvatar)
+        const result = await httpService.createUser(username, password, confirm, selectedType, selectedAvatar)
         if ((result.errors || []).length) {
             let html = ''
             for (const error of result.errors) {
@@ -130,6 +131,7 @@ function changeScreenMode() {
             imgAvatarLogin.style.display = 'none'
             btnLogin.innerText = 'Criar'
             divType.style.display = 'flex'
+            validateFormCreateMode()
         } else {
             screenMode = SCREEN_MODES.LOGIN
             lkChangeMode.innerHTML = 'Criar Conta'
@@ -138,6 +140,7 @@ function changeScreenMode() {
             imgAvatarLogin.style.display = 'block'
             divType.style.display = 'none'
             btnLogin.innerText = 'Entrar'
+            btnLogin.setAttribute('disabled', true)
         }
     }, 300)
 }
@@ -158,12 +161,12 @@ function validateFormCreateMode() {
         && txtPassword.value === txtPasswordConfirm.value
         && selectedAvatar
         && selectedType) {
-        btnLogin.removeAttribute('disabled')
         usernameErrorMessage.style.display = 'none'
         passwordErrorMessage.style.display = 'none'
-    } else {
-        btnLogin.setAttribute('disabled', true)
     }
+
+    if (selectedAvatar && selectedType)
+        btnLogin.removeAttribute('disabled')
 }
 
 function validateForm() {
@@ -180,6 +183,8 @@ function clearForm() {
     usernameErrorMessage.style.display = 'none'
     passwordErrorMessage.style.display = 'none'
     divErrorList.innerHTML = ''
+    divSuccessMessage.innerText = ''
+    divSuccessMessage.style.display = 'none'
 }
 
 function fadeInForm() {
