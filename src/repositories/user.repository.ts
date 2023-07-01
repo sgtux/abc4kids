@@ -21,10 +21,13 @@ export const createUserModelAttributes = (): ModelAttributes<Model<any, any>, Us
         validate: {
             notNull: { msg: 'O campo nome é obrigatório.' },
             notEmpty: { msg: 'O campo nome é obrigatório.' },
-            len: { args: [4, 20], msg: 'O campo nome deve ter entre 4 e 20 caracteres.' },
             is: {
                 msg: 'O nome informado possui caracteres inválidos, os caracteres permitidos são apenas letras números e os caracteres especiais (_@#&)',
-                args: /[a-zA-Z0-9_@#&]+$/i
+                args: /[a-zA-Z0-9_@#&]*$/i
+            },
+            customLen(value: string) {
+                if (value && (value.length < 4 || value.length > 20))
+                    throw Error('O campo nome deve ter entre 4 e 20 caracteres.')
             }
         }
     },
@@ -34,11 +37,14 @@ export const createUserModelAttributes = (): ModelAttributes<Model<any, any>, Us
         validate: {
             notNull: { msg: 'O campo senha é obrigatório.' },
             notEmpty: { msg: 'O campo senha é obrigatório.' },
-            len: { args: [6, 20], msg: 'O campo senha deve ter entre 6 e 20 caracteres.' },
             is: {
                 msg: 'O campo senha possui caracteres inválidos.',
                 args: /^[0-9a-z]*$/i
             },
+            customLen(value: string) {
+                if (value && (value.length < 6 || value.length > 20))
+                    throw Error('O campo senha deve ter entre 6 e 20 caracteres.')
+            }
         }
     },
     type: {
