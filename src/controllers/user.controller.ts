@@ -23,7 +23,7 @@ export class UserController extends BaseController {
     private async createUser(req: AppRequest, res: AppResponse) {
         const { username, password, confirm, type, avatar } = req.body || {}
 
-        if (password !== confirm)
+        if (password && password.length >= 6 && confirm && password !== confirm)
             return validationErrorHandler('A senha informada deve ser igual a senha anterior.', res)
 
         await userRepository.createUser((username || '').toLowerCase(), password, type, avatar)
